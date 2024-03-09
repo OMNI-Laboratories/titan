@@ -1,7 +1,7 @@
 package api
 
 import (
-	"titan/pkg/handlers"
+	"github.com/OMNI-Laboratories/titan/pkg/handlers"
 
 	"github.com/gofiber/fiber/v2"
 )

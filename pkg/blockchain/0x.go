@@ -6,7 +6,8 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"os"
+
+	"github.com/OMNI-Laboratories/titan/pkg/config"
 )
 
 type SwapQuoteResponse struct {
@@ -26,9 +27,9 @@ type SwapQuoteResponse struct {
 }
 
 func GetSwapQuote(sellToken, buyToken, amount string, isSellAmount bool) (*SwapQuoteResponse, error) {
-	apiKey := os.Getenv("OX_API_KEY")
-	feeRecipient := os.Getenv("FEE_RECIPIENT")
-	buyTokenPercentageFee := os.Getenv("BUY_TOKEN_PERCENTAGE_FEE")
+	apiKey := config.Config("OX_API_KEY")
+	feeRecipient := config.Config("FEE_RECIPIENT")
+	buyTokenPercentageFee := config.Config("BUY_TOKEN_PERCENTAGE_FEE")
 
 	if apiKey == "" || feeRecipient == "" || buyTokenPercentageFee == "" {
 		log.Fatal("Environment variables OX_API_KEY, FEE_RECIPIENT, or BUY_TOKEN_PERCENTAGE_FEE are not set.")

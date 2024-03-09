@@ -1,4 +1,4 @@
-module titan
+module github.com/OMNI-Laboratories/titan
 
 go 1.22
 

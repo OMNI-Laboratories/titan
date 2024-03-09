@@ -3,23 +3,18 @@ package main
 import (
 	"fmt"
 	"log"
-	"os"
-	"titan/pkg/api" // Adjust the import path according to your project structure
+
+	"github.com/OMNI-Laboratories/titan/pkg/api"
+
+	"github.com/OMNI-Laboratories/titan/pkg/config"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
-	"github.com/joho/godotenv"
 )
 
 func main() {
-	// Load .env file
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
-
 	// Retrieve the API key from environment variables
-	oxAPIKey := os.Getenv("OX_API_KEY")
+	apiKey := config.Config("OX_API_KEY")
 	if oxAPIKey == "" {
 		log.Fatal("OX_API_KEY must be set in .env")
 	}

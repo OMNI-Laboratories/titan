@@ -1,7 +1,7 @@
 package api
 
 import (
-	"blockchain-project/blockchain" // Use the correct import path
+	"github.com/OMNI-Laboratories/titan/package/blockchain" // Use the correct import path
 
 	"github.com/gofiber/fiber/v2"
 )
