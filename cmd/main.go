@@ -1,11 +1,11 @@
 package main
 
 import (
-	"fmt"
 	"log"
 
 	"github.com/OMNI-Laboratories/titan/pkg/config"
 	"github.com/OMNI-Laboratories/titan/pkg/routes"
+	"github.com/gofiber/fiber/v2/middleware/logger"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
@@ -19,11 +19,12 @@ func main() {
 	}
 
 	app := fiber.New()
+	app.Use(logger.New())
 	app.Use(cors.New())
 
 	// Initialize your API routes within the group
 	routes.SetupRoutes(app)
 
-	fmt.Println("Listening to port 3000")
+	log.Println("Listening to port 3000")
 	app.Listen(":3000")
 }
